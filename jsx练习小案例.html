@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsx</title>
+  <style>
+    .title {
+      padding: 10px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+    <!-- 准备容器 -->
+    <div id="test"></div>
+    <!-- 引入React核心库 -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <!-- 引入React-DOM  -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- 引入babel -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+  let data = ['Vue', 'React', 'Angular']
+  function data1 () {
+     return data.map((item ,index) => {
+          return <li key={ index }> { item }</li>
+      })
+  }
+    let Vdom = (
+      <div>
+        <h1>前端框架</h1>
+        <ul>
+          {
+            // data.map((item ,index) => {
+            //   return <li key={ index }> { item }</li>
+            // })
+            data1 ()
+          }
+        </ul>  
+      </div>
+    )
+    ReactDOM.render(Vdom, document.getElementById('test'))
+  </script>
+</body>
+</html>

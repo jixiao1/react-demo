@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类的基础知识</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      speak () {
+        console.log(`我叫${ this.name }, 今年${ this.age }岁`)
+      }
+    }
+    //创建学生类Student继承Person类
+    class Student extends Person {
+      constructor(name, age , grade) {
+        super(name, age)
+        this.grade = grade
+      }
+      speak1 () {
+        console.log(`我叫${ this.name }, 今年${ this.age }岁, 我读${ this.grade }`)
+      }
+      youxiu () {
+        console.log(`我很优秀的`)
+      }
+    }
+    // let p1 = new Person('zs', 20)
+    // let p2 = new Person('jixiao', 22)
+    // p1.speak()
+    // p2.speak()
+    // console.log("p1====", p1)
+    // console.log("p2====", p2)
+    let s1 = new Student('shaoquan', 19, '高一')
+    s1.speak1()
+    s1.youxiu()
+    console.log('s1====', s1)
+  </script>
+</body>
+</html>

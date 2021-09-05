@@ -17,14 +17,12 @@
  <!-- 引入babel -->
  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
  <script type="text/babel">
-  let Dom = (<h1><span>Hello React</span></h1>)
-  ReactDOM.render(Dom, document.getElementById('test'))
-  console.log('虚拟Dom ====', Dom)
-  console.log(typeof Dom)
-  console.log(Dom instanceof Object)
-  let dom1 = document.getElementById('test1')
-  console.log("真实Dom====", dom1)
-  
+ class Mytend extends React.Component {
+   render () {
+     return <h1>类组件</h1>
+   }
+ }
+ ReactDOM.render(<Mytend/>, document.getElementById('test'))
  </script>
 </body>
 </html>
