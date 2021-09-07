@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr1 = [1, 2, 3]
+    let arr2 = [4,5,6]
+    let arr3 = [...arr1, ...arr2]
+    console.log('arr3==', arr3)
+    
+
+    function sum (...sum) {
+      // console.log(sum)
+      return sum.reduce((pre,current, arr) => {
+        console.log(arr)
+        return pre + current
+      })
+    }
+    console.log(sum(1, 2, 3, 4 , 5))
+    // 构造字面对象使用方法
+    let p1 = { name: 'zs', age: 20}
+    let p2 = { ...p1 }
+    p2.age = 21
+    console.log(p1)
+    console.log(p2)
+    // 合并
+    let p3 = { ...p1, age: 26, sex: '男'}
+    console.log(p3)
+  </script>
+</body>
+</html>

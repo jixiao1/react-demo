@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class person { // 创建类
+      constructor(name, age) { // 类的构造器
+        this.name = name
+        this.age = age
+        this.sayname = function () {
+          console.log(`我叫${this.name}, 今年${this.age}岁`)
+        }
+      }
+      sex = '男'
+      sayhello = () => {
+        console.log('你好世界')
+        console.log(this)
+      }
+    }
+    const p1 = new person('zs', 20)
+    console.log('p1', p1)
+    p1.sayname()
+    p1.sayhello()
+  </script>
+</body>
+</html>
