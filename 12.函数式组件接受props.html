@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <!-- 引入React核心库 -->
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <!-- 引入React-DOM  -->
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+ <!-- 引入babel -->
+ <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+ <!--引入Prop-types  -->
+ <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+ <script type="text/babel">
+   function Person(props) {
+     let { name, age, hobby } = this.props
+    return (
+         <ul>
+           <li>姓名：{ name }</li>
+           <li>年龄：{ age }</li>
+           <li>爱好：{ hobby }</li>
+          </ul>
+       )
+   }
+   Person.propTypes = {
+     name: PropTypes.string.isRequired,
+     age: PropTypes.number,
+     hobby: PropTypes.string,
+     speak: PropTypes.func
+   }
+   Person.defaultProps = {
+     age: 30,
+     hobby: '暂无爱好'
+   }
+   ReactDOM.render(<Person name='zs'/>, document.getElementById('test'))
+ </script>
+</body>
+</html>
