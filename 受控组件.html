@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <!-- 准备容器 -->
+   <div id="test"></div>
+   <div id="test1"></div>
+   <!-- 引入React核心库 -->
+   <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+   <!-- 引入React-DOM  -->
+   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+   <!-- 引入babel,将jsx转换为js -->
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   <script type="text/babel">
+    class Demo extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+      state = {
+        username: '',
+        pass: ''
+      }
+      submitHandler = (event) => {
+        event.preventDefault();// 阻止默认事件
+        let { username, pass } = this.state
+        if (username && pass) {
+          console.log(`我叫${username}, 我的${pass}`)
+        }
+      }
+      changeName = (event) => {
+        this.setState({
+          username: event.target.value
+        })
+      }
+      changePass = () => {
+        this.setState({
+          pass: event.target.value
+        })
+      }
+      render () {
+        return (
+          <form onSubmit={ this.submitHandler }>
+            <input type="text" onChange={this.changeName}  name="usename"/>
+            <input type="password" onChange={this.changePass} name="password"/>
+            <button>登录</button>
+          </form>
+        )
+      }
+    }
+    ReactDOM.render(<Demo/>, document.getElementById('test'))
+   </script>
+</body>
+</html>

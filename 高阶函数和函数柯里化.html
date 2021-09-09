@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高阶函数和函数柯里化</title>
+</head>
+<body>
+   <!-- 准备容器 -->
+   <div id="test"></div>
+   <div id="test1"></div>
+   <!-- 引入React核心库 -->
+   <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+   <!-- 引入React-DOM  -->
+   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+   <!-- 引入babel,将jsx转换为js -->
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   <script type="text/babel">
+  /*
+  
+     高阶函数： 如果一个函数符合下面两个规则中的一个，那该函数就是高阶函数
+      1。若a函数接收的参数是一个函数，那么a函数就可以成为高阶函数
+      2.若a函数调用的的返回值是一个函数， 那么该函数也是高阶函数
+      如： Promise, setInterval, setTimeout, arr.map()等等
+    函数的柯里化：通过函数函数调用继续返回函数的方式，称为函数的柯里化
+  */
+    class Demo extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+      state = {
+        username: '',
+        password: ''
+      }
+      submitHandler = (event) => {
+        event.preventDefault();// 阻止默认事件
+        let { username, password } = this.state
+        if (username && password) {
+          console.log(`我叫${username}, 我的${password}`)
+        }
+      }
+      change1 = (evenType, value) => {
+        // return (event) => {
+        //   this.setState({
+        //     [evenType]: event.target.value
+        //   })
+        // }
+        this.setState({
+          [evenType]: value
+        })
+      }
+      render () {
+        return (
+          <form onSubmit={ this.submitHandler }>
+            {/* <input type="text" onChange={this.change1('username')}  name="usename"/>*/}
+            {/* <input type="password" onChange={this.change1('password')} name="password"/>*/}
+            <input type="text" onChange={(event) => {this.change1('username',event.target.value)}}  name="usename"/>
+            <input type="password" onChange={(event) => {this.change1('password',event.target.value)}} name="password"/>
+            <button>登录</button>
+          </form>
+        )
+      }
+    }
+    ReactDOM.render(<Demo/>, document.getElementById('test'))
+   </script>
+</body>
+</html>
