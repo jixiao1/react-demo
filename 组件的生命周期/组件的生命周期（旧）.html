@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件的生命周期（旧）</title>
+</head>
+<body>
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <div id="test1"></div>
+  <!-- 引入React核心库 -->
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <!-- 引入React-DOM  -->
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- 引入babel,将jsx转换为js -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+//   constructor===
+// Inline Babel script:8 componentWillMount====
+// Inline Babel script:14 render ====
+// Inline Babel script:11 componentDidMount=====
+   class Add extends React.Component {
+     constructor(props) {
+       console.log('constructor===')
+       super(props)
+       this.state = {
+         count: 1
+       }
+     }
+     add = () => {
+       let { count } = this.state
+       count +=1
+       this.setState({
+         count
+       })
+     }
+    //  组件将要挂载完成的时候
+     componentWillMount () {
+       console.log('componentWillMount====')
+     }
+    //  组件更新(正常更新)
+     shouldComponentUpdate () {
+       console.log('shouldComponentUpdate ====')
+       return true
+     }
+    //  组件挂载完成时
+     componentDidMount () {
+       console.log('componentDidMount=====')
+     }
+     foceUpdate = () => {
+       this.forceUpdate();
+     }
+     render () {
+       let { count } = this.state
+       console.log('render ====')
+       return (
+         <div>
+          <div>求和：{ count }</div>
+          <button onClick={this.add}>+1</button>
+          <button onClick={this.foceUpdate}>强制更新</button>
+          </div>
+       )
+     }
+   }
+   ReactDOM.render(<Add/>, document.getElementById('test'))
+  </script>
+</body>
+</html>

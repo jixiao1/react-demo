@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React父子组件</title>
+</head>
+<body>
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <div id="test1"></div>
+  <!-- 引入React核心库 -->
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <!-- 引入React-DOM  -->
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- 引入babel,将jsx转换为js -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+   class A extends React.Component {
+     constructor(props) {
+       super(props)
+     }
+     state = {
+       carName: '宝马'
+     }
+     changeCar = () => {
+       let { carName } = this.state
+       this.setState({
+         carName: '奔驰'
+       })
+     }
+     render () {
+      let { carName } = this.state
+       return (
+        <div>
+         <div>{carName}</div>
+         <button onClick={this.changeCar}>换车</button>
+         <B carName={carName}/>
+        </div>
+       )
+     }
+   }
+   class B extends React.Component {
+     render () {
+      let { carName } = this.props
+       return (
+         <div>
+          <div>你的车是: { carName }</div>
+          </div>
+       )
+     }
+    //  组件更新的阀门
+     shouldComponentUpdate = () => {
+       console.log('shouldComponentUpdate====')
+       return true
+     }
+    // 组件将要接收
+     componentWillReceiveProps () {
+       console.log('componentWillReceiveProps=====')
+     }
+    //  组件将要更新的钩子
+     componentWillUpdate = () => {
+       console.log('componentWillUpdate===')
+     }
+    //  组件更新完毕的钩子
+     componentDidUpdate = () => {
+       console.log('componentDidUpdate====');
+     }
+     static getDerivedStateFromProps () {
+       console.log('getDerivedStateFromProps====')
+       return null
+     }
+   }
+   ReactDOM.render(<A/>, document.getElementById('test'))
+  </script>
+</body>
+</html>

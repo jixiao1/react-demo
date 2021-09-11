@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React的生命周期</title>
+</head>
+<body>
+    <!-- 准备容器 -->
+    <div id="test"></div>
+    <div id="test1"></div>
+    <!-- 引入React核心库 -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <!-- 引入React-DOM  -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- 引入babel,将jsx转换为js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+     //创建组件
+     class Life extends React.Component {
+       constructor(props) {
+         super(props)
+       }
+       state = {
+         opacity: 1
+       }
+       death = () => {
+         clearInterval(this.timer)
+         ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+       }
+       eath = () => {
+        //   setInterval(() => {
+        //   let { opacity } = this.state
+        //   opacity -= .1
+        //   if (opacity <= 0) opacity = 1;
+        //   this.setState({
+        //     opacity
+        //   })
+        // }, 200)
+       }
+      //  组件将在挂载的
+      componentDidMount() {
+        this.timer = setInterval(() => {
+          let { opacity } = this.state
+          opacity -= .1
+          if (opacity <= 0) opacity = 1;
+          this.setState({
+            opacity
+          })
+        }, 200)
+      }
+      // 组件卸载
+      componentWillUnmount() {
+        clearInterval(this.timer)
+      }
+       render () {
+         console.log('render')
+         let { opacity } = this.state
+         return (
+           <div>
+             <h1 style={{ opacity: opacity }}>React的生命周期</h1>
+             <button onClick={this.death}>失活</button>
+             <button onClick={this.eath}>变化</button>
+           </div>
+         )
+       }
+     }
+    //  渲染组件
+     ReactDOM.render(<Life/>, document.getElementById('test'))
+    </script>
+</body>
+</html>

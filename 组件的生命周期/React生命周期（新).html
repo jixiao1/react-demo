@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React父子组件</title>
+</head>
+<body>
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <div id="test1"></div>
+  <!-- 引入React核心库 -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- 引入babel,将jsx转换为js -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+   class A extends React.Component {
+     constructor(props) {
+       super(props)
+     }
+     state = {
+       carName: '宝马'
+     }
+     changeCar = () => {
+       let { carName } = this.state
+       this.setState({
+         carName: '奔驰'
+       })
+     }
+     static getDerivedStateFromProps () {
+       console.log('getDerivedStateFromProps===')
+       return null
+     }
+    //  在更新之前的快照
+     getSnapshotBeforeUpdate () {
+       console.log('getSnapshotBeforeUpdate====')
+       return 'guigu'
+     }
+     componentDidUpdate (a, b, c) {
+       console.log('a, b', a, b, c)
+     }
+     render () {
+      let { carName } = this.state
+       return (
+        <div>
+         <div>{carName}</div>
+         <button onClick={this.changeCar}>换车</button>
+        </div>
+       )
+     }
+   }
+   ReactDOM.render(<A/>, document.getElementById('test'))
+  </script>
+</body>
+</html>
