@@ -1,5 +1,6 @@
 // 采用类组件的写法
 import React from 'react'
+import axios from 'axios'
 // import { 
 //   Hello,
 //   Welcome
@@ -75,6 +76,13 @@ class App extends React.Component {
       list: newList
     })
   }
+  getStateData = () => {
+    axios.get('http://localhost:3000/student').then((res) => {
+      console.log(res)
+    }).catch(error => {
+      console.log('失败了===')
+    })
+  }
   render () {
     let { list } = this.state
     return <div>
@@ -85,6 +93,7 @@ class App extends React.Component {
       <Footer list={list}
       checkedAllTodo={this.checkedAllTodo}
       clearFisahedList={this.clearFisahedList}></Footer>
+      <button onClick={this.getStateData}>点击发送数据</button>
     </div>
   }
 }
