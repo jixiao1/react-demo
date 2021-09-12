@@ -1,6 +1,12 @@
-import Hello from './hello'
+import Hello from './hello/index.mole'
 import Welcome from './Wellcome'
+import Header from './Header'
+import List from './List'
+import Footer from './Footer'
 export {
   Hello,
-  Welcome
+  Welcome,
+  Header,
+  List,
+  Footer
 }

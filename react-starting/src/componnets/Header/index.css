@@ -1,0 +1,9 @@
+.Header {
+  width: 200px;
+  height: 50px;
+  background-color: #eee;
+}
+.Header input {
+  width: 100%;
+  height: 100%;
+}

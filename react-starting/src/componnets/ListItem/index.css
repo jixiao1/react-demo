@@ -1,0 +1,25 @@
+.list_item {
+  width: 500px;
+  height: 30px;
+  background-color: red;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+.list_item span {
+  font-size: 10px;
+}
+.list_item button {
+  width: 200px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background-color: orange;
+}
+/* .list_item:hover {
+  background-color: orange;
+}
+.list_item:hover button {
+  display: block;
+} */

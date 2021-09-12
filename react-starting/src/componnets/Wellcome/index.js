@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './index.css'
+import hello from './index..module.css'
 
 class welcome extends Component {
   render () {
     return (
-      <div className="welcom">
+      <div className={hello.title}>
         Welcome
       </div>
     )
