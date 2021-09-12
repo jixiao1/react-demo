@@ -8,7 +8,8 @@ import axios from 'axios'
 import { 
   Header,
   List,
-  Footer
+  Footer,
+  Github
 } from './componnets'
 
 class App extends React.Component {
@@ -77,10 +78,17 @@ class App extends React.Component {
     })
   }
   getStateData = () => {
-    axios.get('http://localhost:3000/student').then((res) => {
-      console.log(res)
+    axios.get('/api/student').then((res) => {
+      console.log(res.data)
     }).catch(error => {
-      console.log('失败了===')
+      console.log('失败了===', error)
+    })
+  }
+  getCarData = () => {
+    axios.get('/abc/car').then((res) => {
+      console.log(res.data)
+    }).catch(error => {
+      console.log(error)
     })
   }
   render () {
@@ -94,6 +102,8 @@ class App extends React.Component {
       checkedAllTodo={this.checkedAllTodo}
       clearFisahedList={this.clearFisahedList}></Footer>
       <button onClick={this.getStateData}>点击发送数据</button>
+      <button onClick={this.getCarData}>请求汽车的数据</button>
+      <Github></Github>
     </div>
   }
 }

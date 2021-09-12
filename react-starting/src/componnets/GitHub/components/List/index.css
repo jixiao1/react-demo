@@ -1,0 +1,14 @@
+.icon_count {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.icon_img {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  display: flex;
+  margin: 0 10px;
+}
