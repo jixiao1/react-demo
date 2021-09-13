@@ -1,15 +1,12 @@
 // 采用类组件的写法
 import React from 'react'
 import axios from 'axios'
-// import { 
-//   Hello,
-//   Welcome
-// } from './componnets'
 import { 
   Header,
   List,
   Footer,
-  Github
+  RouterLink1
+  // Github
 } from './componnets'
 
 class App extends React.Component {
@@ -103,7 +100,8 @@ class App extends React.Component {
       clearFisahedList={this.clearFisahedList}></Footer>
       <button onClick={this.getStateData}>点击发送数据</button>
       <button onClick={this.getCarData}>请求汽车的数据</button>
-      <Github></Github>
+      {/* <Github></Github> */}
+      <RouterLink1></RouterLink1>
     </div>
   }
 }
