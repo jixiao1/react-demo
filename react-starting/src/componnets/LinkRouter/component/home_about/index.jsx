@@ -14,9 +14,8 @@ export default class home_about extends Component {
     return (
       <div>
         {/* params传递参数 */}
-        {/* searchchuan */}
         <ul>
-        {/* {
+        {
           list.map((listObj) => {
             return (
              <Link key={listObj.id}
@@ -24,8 +23,9 @@ export default class home_about extends Component {
               >{listObj.content}</Link>
             )
           })
-        } */}
-        {
+        }
+          {/* search传递参数*/}
+        {/* {
           list.map((listObj) => {
             return (
              <Link key={listObj.id}
@@ -33,12 +33,27 @@ export default class home_about extends Component {
               >{listObj.content}</Link>
             )
           })
-        }
+        } */}
+        {/**state传递参数 */}
+        {/* {
+          list.map((listObj) => {
+            return (
+             <Link key={listObj.id}
+              to={{
+                pathname: '/home/home_news/detail',
+                state: {id: listObj.id, title: listObj.content}
+              }}
+              >{listObj.content}</Link>
+            )
+          })
+        } */}
         </ul>
         <hr/>
         {/* 声明接收params参数 */}
         {/* <Route path='/home/home_news/detail/:name/:count/:age' component={home_content}/> */}
         {/* search无需接收 */}
+        {/* <Route path='/home/home_news/detail' component={home_content}/> */}
+        {/* state无需接受*/}
         <Route path='/home/home_news/detail' component={home_content}/>
       </div>
     )
